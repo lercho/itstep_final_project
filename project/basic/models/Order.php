@@ -19,7 +19,7 @@ class Order extends ActiveRecord {
             [
                 'phone',
                 'match',
-                'pattern' => '~^[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$~',
+                'pattern' => '~^0[0-9]{9}$~',
                 'message' => 'Номер телефона должен соответствовать шаблону 0551234567'
             ],
             [['name', 'surname', 'email', 'phone', 'city'], 'string', 'max' => 50],
@@ -35,8 +35,8 @@ class Order extends ActiveRecord {
             $item->product_id = $product_id;
             $item->name = $product['name'];
             $item->price = $product['price'];
-            $item->quantity = $product['count'];
-            $item->cost = $product['price'] * $product['count'];
+            // $item->quantity = $product['count'];
+            $item->cost = $product['price'];
             $item->insert();
         }
     }

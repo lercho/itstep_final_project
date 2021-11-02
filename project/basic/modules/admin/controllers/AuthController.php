@@ -11,7 +11,6 @@ class AuthController extends Controller {
 
     public function actionLogin() {
         $model = new LoginForm();
-        
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if (Yii::$app->params['adminEmail'] == $model->email

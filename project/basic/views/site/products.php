@@ -43,23 +43,27 @@ use yii\widgets\LinkPager;
                                     <ul class="product__item__pic__hover">
                                         <li><a href="<?= \yii\helpers\Url::to(['site/oneproduct', 'id' => $record['id']]) ?>"><i class="fa fa-eye"></i></a></li>
                                         <li>
-                                            <div>
-                                                <form method="post" 
-                                                    class="add-to-basket"
-                                                    action="<?= yii\helpers\Url::to(['basket/add']); ?>">
-                                                    <input type="hidden" name="id"
-                                                    value="<?= $record['id']; ?>">
-                                                    <?=
-                                                        yii\helpers\Html::hiddenInput(
-                                                            Yii::$app->request->csrfParam,
-                                                            Yii::$app->request->csrfToken
-                                                        );
-                                                    ?>
-                                                    <button type="submit">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
+                                            <?php if (isset($basket['products'][$record['id']])): ?>
+                                                <a class="disabled"><i class="fa fa-check text-white"></i></a>
+                                            <?php else: ?>
+                                                <div>
+                                                    <form method="post" 
+                                                        class="add-to-basket"
+                                                        action="<?= yii\helpers\Url::to(['basket/add']); ?>">
+                                                        <input type="hidden" name="id"
+                                                        value="<?= $record['id']; ?>">
+                                                        <?=
+                                                            yii\helpers\Html::hiddenInput(
+                                                                Yii::$app->request->csrfParam,
+                                                                Yii::$app->request->csrfToken
+                                                            );
+                                                        ?>
+                                                        <button type="submit">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            <?php endif; ?>
                                         </li>
 
                                     </ul>

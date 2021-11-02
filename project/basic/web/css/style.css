@@ -814,6 +814,16 @@ ol {
   color: #ffffff;
   transform: rotate(360deg);
 }
+.featured__item__pic__hover li:hover a.disabled, 
+.product__item__pic__hover li:hover a.disabled {
+  background: #436A5C;
+  border-color: #ffffff;
+  cursor:unset;
+}
+.featured__item__pic__hover li:hover a.disabled i,
+.product__item__pic__hover li:hover a.disabled i {
+  transform: none;
+}
 .featured__item__pic__hover li a {
   font-size: 16px;
   color: #1c1c1c;
@@ -830,6 +840,10 @@ ol {
   -ms-transition: all, 0.5s;
   -o-transition: all, 0.5s;
   transition: all, 0.5s;
+}
+.featured__item__pic__hover li a.disabled,
+.product__item__pic__hover li a.disabled {
+  background: #436A5C;
 }
 .featured__item__pic__hover li a i {
   position: relative;
@@ -1203,6 +1217,7 @@ ol {
   background: #436A5C;
   border-color: #436A5C;
 }
+
 .product__item__pic__hover li:hover a i,
 .product__item__pic__hover li:hover div i {
   color: #ffffff;

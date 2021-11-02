@@ -93,5 +93,4 @@ class Order extends ActiveRecord {
         parent::afterDelete();
         OrderItem::deleteAll(['order_id' => $this->id]);
     }
-       
 }

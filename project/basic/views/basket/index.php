@@ -58,6 +58,5 @@
     </section>
     <?php else: ?>
         <p class="text-center my-5">Ваша корзина пуста</p>
-
     <?php endif; ?>
     <!-- Shoping Cart Section End -->

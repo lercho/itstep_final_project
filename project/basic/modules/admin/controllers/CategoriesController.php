@@ -35,8 +35,7 @@ class CategoriesController extends AdminController
      * Lists all Categories models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $categories = Categories::getAllCategories();
         return $this->render('index', compact(['categories']));
     }
@@ -61,8 +60,7 @@ class CategoriesController extends AdminController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Categories();
         if ($model->load(Yii::$app->request->post())) {
             $model->upload = UploadedFile::getInstance($model, 'img');
@@ -72,7 +70,6 @@ class CategoriesController extends AdminController
             $model->save();
             return $this->redirect(['index']);
        }
-
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -85,11 +82,9 @@ class CategoriesController extends AdminController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
         $old = $model->img;
-
         if ($model->load(Yii::$app->request->post())) {
             $model->upload = UploadedFile::getInstance($model, 'img');
             if ($new = $model->uploadImage()) {
@@ -101,7 +96,6 @@ class CategoriesController extends AdminController
             $model->save();
             return $this->redirect(['index']);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -114,10 +108,8 @@ class CategoriesController extends AdminController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -128,12 +120,10 @@ class CategoriesController extends AdminController
      * @return Categories the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Categories::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

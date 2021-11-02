@@ -39,7 +39,6 @@ use yii\widgets\LinkPager;
                                <div class="product__item__pic set-bg" data-setbg="<?= Yii::getAlias('@web/img/products/medium/').$record['img_1'];?>" style="background-image: url('<?= Yii::getAlias('@web/img/products/medium/').$record['img_1'];?>');">
                                    <ul class="product__item__pic__hover">
                                        <li><a href="<?= \yii\helpers\Url::to(['site/oneproduct', 'id' => $record['id']]) ?>"><i class="fa fa-eye"></i></a></li>
-
                                        <li>
                                            <div>
                                            <form method="post" 
@@ -59,7 +58,6 @@ use yii\widgets\LinkPager;
                                            </form>
                                            </div>
                                        </li>
-
                                    </ul>
                                </div>
                                <div class="product__item__text">

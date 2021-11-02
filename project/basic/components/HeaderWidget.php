@@ -17,14 +17,12 @@ class HeaderWidget extends Widget {
             $basket_amount = 0;
         }
         $categories_arr = Categories::find()->all();           
-        $html = $this->render('header', compact('categories_arr', 'basket_count', 'basket_amount'));
-
-        // $html = \Yii::$app->cache->get('categories');
-        // if ($html === false) {
-        //     $categories_arr = Categories::find()->all();
-        //     $html = $this->render('categories', compact('categories_arr'));
-        //     \Yii::$app->cache->set('categories', $html, 60*60*24);
-        // }
+        $html = \Yii::$app->cache->get('categories');
+        if ($html === false) {
+            $categories_arr = Categories::find()->all();
+            $html = $this->render('header', compact('categories_arr', 'basket_count', 'basket_amount'));
+            \Yii::$app->cache->set('categories', $html, 60*60*24);
+        }
         return $html;
     }
 }

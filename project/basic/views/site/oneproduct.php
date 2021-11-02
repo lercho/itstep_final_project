@@ -14,7 +14,6 @@
                             <?= yii\helpers\Html::img('@web/img/products/thumb/'.$product[0]->img_2, ['alt' => '', 'data-imgbigurl' => Yii::getAlias('@web/img/products/large/').$product[0]->img_2]) ?>  
                             <?= yii\helpers\Html::img('@web/img/products/thumb/'.$product[0]->img_3, ['alt' => '', 'data-imgbigurl' => Yii::getAlias('@web/img/products/large/').$product[0]->img_3]) ?>  
                             <?= yii\helpers\Html::img('@web/img/products/thumb/'.$product[0]->img_4, ['alt' => '', 'data-imgbigurl' => Yii::getAlias('@web/img/products/large/').$product[0]->img_4]) ?>  
-                            
                         </div>
                     </div>
                 </div>
@@ -27,7 +26,6 @@
                         <div class="mb-5">
                             <p class="mb-3"><?= $product[0]->description_short ?></p>
                         </div>
-
                         <div>
                             <form method="post" 
                                 class="add-to-basket"

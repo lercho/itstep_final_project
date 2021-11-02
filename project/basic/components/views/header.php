@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="<?= yii\helpers\Url::to(['basket/index']); ?>"><i class="fa fa-shopping-bag"></i> 
                     <?php if ($basket_count != 0): ?>
-                        <span id="cart"><?= $basket_count ?></span>
+                        <span><?= $basket_count ?></span>
                     <?php endif; ?>
                 </a></li>
             </ul>
@@ -86,7 +86,7 @@
                         <ul>
                             <li><a href="<?= yii\helpers\Url::to(['basket/index']); ?>"><i class="fa fa-shopping-bag"></i>
                                 <?php if ($basket_count != 0): ?>
-                                    <span id="cart"><?= $basket_count ?></span>
+                                    <span><?= $basket_count ?></span>
                                 <?php endif; ?>
 
                             </a></li>
@@ -113,12 +113,9 @@
                             <span>Все категории</span>
                         </div>
                         <ul>
-
                             <?php foreach ($categories_arr as $record): ?>
-                                
                                 <li><a href="<?= \yii\helpers\Url::to(['site/categories', 'id' => $record['id']]) ?>"><?= $record['category_name'] ?></a></li>
                             <?php endforeach;?>
-                            
                         </ul>
                     </div>
                 </div>

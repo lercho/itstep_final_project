@@ -1,9 +1,11 @@
 <?php
 
 $this->title = 'PARAMONOVA';
+
 ?>
 
    <!-- Hero Section Begin -->
+
     <section class="hero mb-5">
         <div class="container">
             <div class="row">
@@ -14,7 +16,6 @@ $this->title = 'PARAMONOVA';
                         <div class="hero__text">
                             <span>Ручная работа</span>
                             <h2 class="my-3">Вышитые картины</h2>
-                            <!-- <p></p> -->
                             <a href="<?= \yii\helpers\Url::to(['site/products']) ?>" class="primary-btn mt-5">В МАГАЗИН</a>
                         </div>
                     </div>
@@ -22,6 +23,7 @@ $this->title = 'PARAMONOVA';
             </div>
         </div>
     </section>
+
     <!-- Hero Section End -->
 
     <!-- Categories Section Begin -->
@@ -66,22 +68,26 @@ $this->title = 'PARAMONOVA';
                             <ul class="featured__item__pic__hover product__item__pic__hover">
                                 <li><a href="<?= \yii\helpers\Url::to(['site/oneproduct', 'id' => $record['id']]) ?>"><i class="fa fa-eye"></i></a></li>
                                 <li>
-                                    <div>
-                                        <form method="post" 
-                                            class="add-to-basket"
-                                            action="<?= yii\helpers\Url::to(['basket/add']); ?>">
-                                            <input type="hidden" name="id" value="<?= $record['id']; ?>">
-                                            <?=
-                                                yii\helpers\Html::hiddenInput(
-                                                    Yii::$app->request->csrfParam,
-                                                    Yii::$app->request->csrfToken
-                                                );
-                                            ?>
-                                            <button type="submit">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </form>
-                                    </div>
+                                    <?php if (isset($basket['products'][$record['id']])): ?>
+                                        <a class="disabled"><i class="fa fa-check text-white"></i></a>                    
+                                    <?php else: ?>
+                                        <div>
+                                            <form method="post" 
+                                                class="add-to-basket"
+                                                action="<?= yii\helpers\Url::to(['basket/add']); ?>">
+                                                <input type="hidden" name="id" value="<?= $record['id']; ?>">
+                                                <?=
+                                                    yii\helpers\Html::hiddenInput(
+                                                        Yii::$app->request->csrfParam,
+                                                        Yii::$app->request->csrfToken
+                                                    );
+                                                ?>
+                                                <button type="submit">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
+                                        </div>   
+                                    <?php endif; ?>                                    
                                 </li>
                             </ul>
                         </div>
@@ -92,7 +98,6 @@ $this->title = 'PARAMONOVA';
                     </div>
                 </div>
                 <?php endforeach;?>
-               
             </div>
         </div>
     </section>
@@ -111,7 +116,6 @@ $this->title = 'PARAMONOVA';
             </div>
             <div class="row">
             <?php foreach ($blog_articles_arr as $record): ?>
-
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
@@ -127,3 +131,5 @@ $this->title = 'PARAMONOVA';
         </div>
     </section>
     <!-- Blog Section End -->
+
+    

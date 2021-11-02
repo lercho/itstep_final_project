@@ -13,7 +13,7 @@ class OrderController extends Controller {
    public function actionCheckout() {
       $session = Yii::$app->session;
       $session->open();
-      if (!$session->has('basket') || empty($session->get('basket'))) {
+      if (!$session->has('basket') || empty($session->get('basket')) && !Yii::$app->session->hasFlash('checkout-success')) { 
          return $this->goHome();
       }
       $order = new Order();
@@ -43,17 +43,17 @@ class OrderController extends Controller {
             );
          } else {
          
-         $basket = new Basket();
-         $content = $basket->getBasket();
-         $order->amount = $content['amount'];
-         $order->insert();
-         $order->addItems($content);
-         $basket->clearBasket();
-         Yii::$app->session->setFlash(
-            'checkout-success',
-            true
-         );
-         }
+            $basket = new Basket();
+            $content = $basket->getBasket();
+            $order->amount = $content['amount'];
+            $order->insert();
+            $order->addItems($content);
+            $basket->clearBasket();
+            Yii::$app->session->setFlash(
+               'checkout-success',
+               true
+            );
+            }
             return $this->refresh();
          }
          $basket = (new Basket())->getBasket();

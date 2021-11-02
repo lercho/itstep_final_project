@@ -1,8 +1,5 @@
 <?php
 
-/*
-* Страница оформления заказа, файл views/order/checkout.php
-*/
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -41,7 +38,7 @@ if (Yii::$app->session->hasFlash('checkout-data')) {
                     <?php
                         $success = false;
                         if (Yii::$app->session->hasFlash('checkout-success')) {
-                        $success = Yii::$app->session->getFlash('checkout-success');
+                            $success = Yii::$app->session->getFlash('checkout-success');
                         }
                     ?>
                     <?php if (!$success): ?>
@@ -71,74 +68,72 @@ if (Yii::$app->session->hasFlash('checkout-data')) {
                     );
                     ?>
                         <div class="row">
-                                <div class="col-lg-8 col-md-6">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <?= $form->field($order, 'name')->textInput(['autofocus' => true, 'value' => $name])->label('Имя<span>*</span>'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <?= $form->field($order, 'surname')->textInput(['value' => $surname])->label('Фамилия<span>*</span>'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <?= $form->field($order, 'phone')->textInput(['value' => $phone])->label('Телефон<span>*</span>'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="checkout__input">
-                                                <?= $form->field($order, 'email')->input('email', ['value' => $email])->label('Имейл<span>*</span>'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="checkout__input">
-                                        <?= $form->field($order, 'payment_method')->radioList(['cash' => 'Наличными при получении', 'card' => 'На карту Приватбанка'], ['value' => $payment_method])->label('Оплата<span>*</span>') ?>
-                                    </div>
-                                    
-                                    <div class="checkout__input">
+                            <div class="col-lg-8 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
                                         <div class="checkout__input">
-                                            <?= $form->field($order, 'delivery_option')->radioList(['novaposhta' => 'Нова Пошта', 'justin' => 'Justin'], ['value' => $delivery_option])->label('Доставка<span>*</span>') ?>
+                                            <?= $form->field($order, 'name')->textInput(['autofocus' => true, 'value' => $name])->label('Имя<span>*</span>'); ?>
                                         </div>
-                                        <div class="checkout__input">
-                                                <?= $form->field($order, 'city')->textInput(['value' => $city])->label('Город<span>*</span>'); ?>
-                                            </div>
-                                        <div class="checkout__input">
-                                                <?= $form->field($order, 'delivery_department')->textInput(['value' => $delivery_department])->label('Отделение<span>*</span>'); ?>
-                                            </div>
                                     </div>
-                                    
-                                    <div class="checkout__input">
-                                        <?= $form->field($order, 'comment')->textarea(['rows' => 6, 'value' => $comment])->label('Комментарий');?>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <?= $form->field($order, 'surname')->textInput(['value' => $surname])->label('Фамилия<span>*</span>'); ?>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="checkout__order">
-                                        <h4>Ваш Заказ</h4>
-                                        <ul>
-                                            <?php foreach ($basket['products'] as $record): ?>
-                                                <li><?= $record['name']; ?><span><?= $record['price']; ?> грн.</span></li>
-                                            <?php endforeach;?>
-                                        </ul>
-                                        <div class="checkout__order__total">Всего <span><?= $basket['amount']; ?> грн.</span></div>
-                                        <?= Html::submitButton('ЗАКАЗАТЬ', ['class' => 'site-btn']); ?>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <?= $form->field($order, 'phone')->textInput(['value' => $phone])->label('Телефон<span>*</span>'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <?= $form->field($order, 'email')->input('email', ['value' => $email])->label('Имейл<span>*</span>'); ?>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="checkout__input">
+                                    <?= $form->field($order, 'payment_method')->radioList(['cash' => 'Наличными при получении', 'card' => 'На карту Приватбанка'], ['value' => $payment_method])->label('Оплата<span>*</span>') ?>
+                                </div>
+                                
+                                <div class="checkout__input">
+                                    <div class="checkout__input">
+                                        <?= $form->field($order, 'delivery_option')->radioList(['novaposhta' => 'Нова Пошта', 'justin' => 'Justin'], ['value' => $delivery_option])->label('Доставка<span>*</span>') ?>
+                                    </div>
+                                    <div class="checkout__input">
+                                            <?= $form->field($order, 'city')->textInput(['value' => $city])->label('Город<span>*</span>'); ?>
+                                        </div>
+                                    <div class="checkout__input">
+                                            <?= $form->field($order, 'delivery_department')->textInput(['value' => $delivery_department])->label('Отделение<span>*</span>'); ?>
+                                        </div>
+                                </div>
+                                
+                                <div class="checkout__input">
+                                    <?= $form->field($order, 'comment')->textarea(['rows' => 6, 'value' => $comment])->label('Комментарий');?>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="checkout__order">
+                                    <h4>Ваш Заказ</h4>
+                                    <ul>
+                                        <?php foreach ($basket['products'] as $record): ?>
+                                            <li><?= $record['name']; ?><span><?= $record['price']; ?> грн.</span></li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                    <div class="checkout__order__total">Всего <span><?= $basket['amount']; ?> грн.</span></div>
+                                    <?= Html::submitButton('ЗАКАЗАТЬ', ['class' => 'site-btn']); ?>
+                                </div>
+                            </div>
                         </div>
-
                     <?php ActiveForm::end(); ?>
+                    
                     <?php else: ?>
                         <p>Ваш заказ успешно оформлен, спасибо за покупку!</p>
                         <p>Мы свяжемся с вами в ближайшее время.</p>
                     <?php endif; ?>
                 </div>
-                    </div>
-        
-            
+            </div>
         </div>
     </section>
     <!-- Checkout Section End -->

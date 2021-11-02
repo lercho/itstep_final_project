@@ -19,9 +19,8 @@ class BasketController extends Controller {
 
         if (!isset($data['count'])) {
             $data['count'] = 1;
-            }
+        }
         $basket->addToBasket($data['id'], $data['count']);
-        print_r('я тут');
         return $this->redirect(['basket/index']);
 
         if (Yii::$app->request->isAjax) { 
